@@ -4,13 +4,11 @@
     <server-error v-if="hasError"/>
     <template v-if="!loading && !hasError">
       <header class="header container-fluid">
-        <div class="container">
-          <div class="row">
-            <div class="col">
-              <router-link :to="{ name: 'home' }">
-                <div class="logo"></div>
-              </router-link>
-            </div>
+        <div class="row">
+          <div class="col-2">
+            <router-link :to="{ name: 'home' }">
+              <div class="logo"></div>
+            </router-link>
           </div>
         </div>
       </header>
@@ -30,14 +28,12 @@
       <footer class="footer container-fluid">
         <div class="row">
           <div class="col-md-3 v-center">
-            <p class="rights">© 2015 - 2018 O Mago da Web. Todos os direitos reservados.</p>
+            <p class="rights">© {{ currentDateYear }} Alemão aula para Habilitados. Todos os direitos reservados.</p>
           </div>
           <div class="socials col-md-2 offset-7 v-center">
             <a :href="facebookUrl" class="icon fb v-center" target="_blank">
             </a>
             <a :href="twitterUrl" class="icon tt v-center" target="_blank">
-            </a>
-            <a :href="googlePlusUrl" class="icon gp v-center" target="_blank">
             </a>
           </div>
         </div>
@@ -76,6 +72,7 @@ export default {
   data: () => ({
     loading: true,
     hasError: false,
+    currentDateYear: (new Date()).getFullYear(),
     menu: [
       { name: 'mago', label: 'Mago' },
       { name: 'servicos', label: 'Serviços' },
