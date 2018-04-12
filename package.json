@@ -1,5 +1,5 @@
 {
-  "name": "Alemão Aula para Habilitados",
+  "name": "alemaoaulaparahabilitados",
   "version": "1.0.0",
   "description": "Front-end do site do Alemão aula para Habilitados",
   "author": "Thiago Hofmeister",
@@ -19,6 +19,7 @@
     "lodash": "^4.17.4",
     "prerender-spa-plugin": "^2.1.0",
     "vue": "^2.5.2",
+    "vue-analytics": "^5.10.2",
     "vue-awesome": "^2.3.4",
     "vue-head": "^2.0.11",
     "vue-material": "^1.0.0-beta-7",

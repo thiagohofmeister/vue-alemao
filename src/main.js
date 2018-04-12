@@ -4,9 +4,14 @@ import Vue from 'vue'
 import App from './App'
 import store from './store'
 import router from './router'
+import VueAnalytics from 'vue-analytics'
 // import Icon from 'vue-awesome/icons'
 
 Vue.config.productionTip = false
+
+Vue.use(VueAnalytics, {
+  id: 'UA-117492948-1'
+})
 
 // Vue.component(Icon)
 
