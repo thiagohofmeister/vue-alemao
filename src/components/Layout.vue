@@ -81,7 +81,7 @@ export default {
     title: {
       inner: path().title,
       separator: '-',
-      complement: path().index ? '' : 'Alemão Aula para Habilitados'
+      complement: path().index === true ? '' : 'Alemão Aula para Habilitados'
     },
     meta: [
       { name: 'description', content: path().description },
