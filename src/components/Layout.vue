@@ -80,8 +80,8 @@ export default {
   head: {
     title: {
       inner: path().title,
-      separator: '-',
-      complement: path().index === true ? '' : 'Alemão Aula para Habilitados'
+      separator: path().index ? ' ' : '-',
+      complement: path().index ? ' ' : 'Alemão Aula para Habilitados'
     },
     meta: [
       { name: 'description', content: path().description },
