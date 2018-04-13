@@ -21,32 +21,7 @@
           </div>
         </div>
       </header>
-
-      <div class="container-fluid">
-        <div class="row">
-          <div class="menu col text-center">
-            <router-link class="menu-item" v-for="menuItem in menu" :to="{ name: menuItem.name }" :key="menuItem.name">
-              <div class="menu-item-label">{{ menuItem.label }}</div>
-            </router-link>
-          </div>
-        </div>
-      </div>
-
       <router-view/>
-
-      <footer class="footer container-fluid">
-        <div class="row">
-          <div class="col-md-3 v-center">
-            <p class="rights">© {{ currentDateYear }} Alemão aula para Habilitados. Todos os direitos reservados.</p>
-          </div>
-          <div class="socials col-md-2 offset-7 v-center">
-            <a :href="facebookUrl" class="icon fb v-center" target="_blank">
-            </a>
-            <a :href="twitterUrl" class="icon tt v-center" target="_blank">
-            </a>
-          </div>
-        </div>
-      </footer>
     </template>
   </div>
 </template>
