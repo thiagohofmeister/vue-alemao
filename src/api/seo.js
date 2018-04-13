@@ -18,6 +18,7 @@ const canonical = function (str) {
 export default {
   '/': {
     title: 'Alemão Aula para Habilitados - Perca o medo de dirigir',
+    index: true,
     description: 'O Alemão também dá aula para condutores habilitados, agora você pode perder aquele medo de dirigir no trânsito da cidade grande, marque sua aula agora',
     canonical: canonical('/'),
     openGraph: canonical('/logotipo.png')
