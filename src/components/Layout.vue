@@ -3,23 +3,8 @@
     <loader :loading="loading"/>
     <server-error v-if="hasError"/>
     <template v-if="!loading && !hasError">
-      <header class="header container-fluid">
-        <div class="row">
-          <div class="col">
-            <router-link :to="{ name: 'home' }">
-              <div class="logo"></div>
-            </router-link>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col text-center">
-            <h2>Em construção!</h2>
-            <p>
-              Para mais informações ligue ou mande mensagem no WhatsApp!<br>
-              <span>(51) 9 9231-7467</span>
-            </p>
-          </div>
-        </div>
+      <header v-if="!isIndex">
+        Teste
       </header>
       <router-view/>
     </template>
@@ -32,7 +17,7 @@ import ServerError from '@/components/ServerError'
 import Icon from 'vue-awesome/components/Icon'
 import seo from '@/api/seo'
 
-const path = function () {
+const getSeo = function (value) {
   let url = window.location.href
 
   let slug = ''
@@ -49,25 +34,24 @@ const path = function () {
     slug = '/'
   }
 
-  return seo[slug]
+  if (seo[slug] !== undefined) {
+    if (seo[slug][value]) {
+      return seo[slug][value]
+    }
+  }
+
+  return ''
 }
 
 export default {
   data: () => ({
     loading: true,
     hasError: false,
-    currentDateYear: (new Date()).getFullYear(),
-    menu: [
-      { name: 'mago', label: 'Mago' },
-      { name: 'servicos', label: 'Serviços' },
-      { name: 'blog', label: 'Blog' },
-      { name: 'contato', label: 'Contato' }
-    ],
-    facebookUrl: '',
-    twitterUrl: '',
-    googlePlusUrl: ''
+    isIndex: false,
+    currentDateYear: (new Date()).getFullYear()
   }),
   async mounted () {
+    this.isIndex = !!getSeo('index')
     setTimeout(() => {
       this.loading = false
     }, 500)
@@ -79,21 +63,21 @@ export default {
   },
   head: {
     title: {
-      inner: path().title,
-      separator: path().index ? ' ' : '-',
-      complement: path().index ? ' ' : 'Alemão Aula para Habilitados'
+      inner: getSeo('title'),
+      separator: getSeo('index') ? ' ' : '-',
+      complement: getSeo('index') ? ' ' : 'Alemão Aula para Habilitados'
     },
     meta: [
-      { name: 'description', content: path().description },
+      { name: 'description', content: getSeo('description') },
       { name: 'robots', content: 'index, follow' },
-      { rel: 'canonical', content: path().canonical },
+      { rel: 'canonical', content: getSeo('canonical') },
       { property: 'publisher', content: 'REDE SOCIAL' },
       { property: 'og:site_name', content: 'Alemão Aula para Habilitados' },
       { property: 'og:locale', content: 'pt_BR' },
-      { property: 'og:title', content: path().title },
-      { property: 'og:description', content: path().description },
-      { property: 'og:image', content: path().openGraph },
-      { property: 'og:url', content: path().canonical },
+      { property: 'og:title', content: getSeo('title') },
+      { property: 'og:description', content: getSeo('description') },
+      { property: 'og:image', content: getSeo('openGraph') },
+      { property: 'og:url', content: getSeo('canonical') },
       { property: 'og:type', content: 'website' },
       { name: 'msapplication-TileColor', content: '#ffffff' },
       { name: 'msapplication-TileImage', content: '/ms-icon-144x144.png' },
@@ -101,10 +85,10 @@ export default {
       { name: 'google-site-verification', content: 'U09ALDM16y0dahQ2g-xGsh6pG4-BzIy49_IVHE7YI8k' }
     ],
     base: [
-      { href: path().canonical }
+      { href: getSeo('canonical') }
     ],
     link: [
-      { rel: 'canonical', content: path().canonical },
+      { rel: 'canonical', content: getSeo('canonical') },
       { rel: 'publisher', content: 'REDE SOCIAL' },
       { rel: 'apple-touch-icon', sizes: '57x57', href: '/static/apple-icon-57x57.png' },
       { rel: 'apple-touch-icon', sizes: '60x60', href: '/static/apple-icon-60x60.png' },
@@ -126,35 +110,16 @@ export default {
 </script>
 
 <style lang="sass">
-  body
-    background: #008c23 !important
-
   .header
     padding: 15px
     background: #008c23
     height: 385px
-    position: absolute
-    top: 0
-    bottom: 0
-    margin: auto
 
   .logo
     background: url("../assets/logotipo.png")
     width: 256px
     height: 250px
     margin: auto
-
-  h2
-    color: #fff
-    font-weight: bold
-
-  p
-    color: #ffffff
-    font-size: 18px
-
-    span
-      font-weight: bold
-      font-size: 22px
 
   .menu
     text-align: right
