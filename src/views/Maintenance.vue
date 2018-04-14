@@ -2,7 +2,7 @@
   <div class="maintenance container-fluid">
     <div class="row">
       <div class="col">
-        <router-link :to="{ name: 'home' }">
+        <router-link :to="{ name: 'maintenance' }">
           <div class="logo"></div>
         </router-link>
       </div>
