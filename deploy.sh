@@ -13,7 +13,3 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" -o "$TRAVIS_BRANCH" != "$SOURCE_BRANCH" ]
     echo "Skipping deploy."
     exit 0
 fi
-
-# entre na pasta onde está o build do seu projeto e inicie um novo repositório git
-cd build
-scp ./* thiagohof@thiagohof.com.br:www/ . -phof120540
