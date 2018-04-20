@@ -25,7 +25,7 @@
 
   .maintenance
     padding: 15px
-    background: #008c23s
+    background: #008c23
     height: 385px
     position: absolute
     top: 0
