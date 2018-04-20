@@ -1,5 +1,7 @@
 # Alemão Aula para Habilitados
 
+[![Build Status](https://travis-ci.org/thiagohofmeister/vue-alemao.svg?branch=master)](https://travis-ci.org/thiagohofmeister/vue-alemao)
+
 > Front-end do site do Alemão Aula para Habilitados
 
 ## Build Setup
